@@ -27,20 +27,11 @@ int32_t TLE94112EL_SetHBRegdata(const TLE94112EL_t *const handler, uint8_t TLE94
 
 	}
 
-	//read
-	tx_data[0] = addr;
-	tx_data[1] = 0xff;
-	handler->spi_transfer(tx_data, rx_data);
-
 	  //write
 	  tx_data[0] = addr | 0x80;
 	  tx_data[1] = regdata;
 
 	  handler->spi_transfer(tx_data, rx_data);
-
-
-
-
 
   return rx_data[0];
 }
